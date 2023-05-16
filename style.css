@@ -42,7 +42,7 @@ h6 {
     padding: 0;
 }
 
-a:link,
+header a:link,
 a:visited {
     text-decoration: none;
     color: var(--vulcan);
@@ -277,6 +277,7 @@ p {
 }
 .intro-ttl {
     font-size: 1.2rem;
+    margin-top: 1rem;
 }
 .intro-txt {
     line-height: 1.5rem;
@@ -290,8 +291,8 @@ p {
     justify-content: center;
     max-width: 300px;
     font-size: 0.8rem;
+    color: #fff;
 }
-
 @media (min-width: 1280px) {
     .intro {
         width: 100%;
