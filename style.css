@@ -40,6 +40,11 @@ h6 {
     padding: 0;
 }
 
+a:link,
+a:visited {
+    text-decoration: none;
+}
+
 body {
     font-family: "Roboto", Helvetica, sans-serif;
     color: var(--vulcan);
