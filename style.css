@@ -1,0 +1,255 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+:root {
+    font-size: 16px;
+    --vulcan: #373942;
+}
+
+@media screen and (min-width: 1024px) {
+    :root {
+        font-size: 24px;
+    }
+}
+@media screen and (min-width: 1280px) {
+    :root {
+        font-size: 28px;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+body,
+ul,
+li,
+nav,
+figure,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Roboto", Helvetica, sans-serif;
+    color: var(--vulcan);
+    font-size: 0.75rem;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+}
+/* BUTTON */
+
+.cta {
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    background-color: var(--vulcan);
+}
+
+@media (min-width: 1024px) {
+    .cta-desktop {
+        padding: 0.5rem 1rem;
+        border-radius: 1rem;
+        font-weight: bold;
+        font-size: 0.9rem;
+        color: #fff;
+        text-transform: uppercase;
+        text-decoration: none;
+        background-color: var(--vulcan);
+    }
+}
+
+/* HEADER */
+
+.header-nav {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 1rem;
+    border-bottom: 1px solid var(--vulcan);
+    z-index: 1;
+}
+.header-nav-ttl {
+    display: flex;
+    align-items: center;
+}
+.header-logo {
+    aspect-ratio: 1/1;
+    width: 30px;
+}
+.header-ttl {
+    margin-left: 1rem;
+    font-size: 1.2rem;
+}
+.header-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.header-menu > li {
+    margin: 0 0.4rem;
+    overflow: hidden;
+}
+
+.header-menu-button-container {
+    display: none;
+    width: 40px;
+    cursor: pointer;
+    align-items: center;
+}
+
+#header-menu-toggle {
+    display: none;
+}
+
+.header-menu-button,
+.header-menu-button::before,
+.header-menu-button::after {
+    display: block;
+    background-color: var(--vulcan);
+    position: absolute;
+    height: 3px;
+    width: 40px;
+    transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    border-radius: 2px;
+}
+
+.header-menu-button::before {
+    content: "";
+    margin-top: -0.8rem;
+}
+
+.header-menu-button::after {
+    content: "";
+    margin-top: 0.8rem;
+}
+
+#header-menu-toggle:checked
+    + .header-menu-button-container
+    .header-menu-button::before {
+    margin-top: 0px;
+    transform: rotate(405deg);
+}
+
+#header-menu-toggle:checked
+    + .header-menu-button-container
+    .header-menu-button {
+    background: rgba(255, 255, 255, 0);
+}
+
+#header-menu-toggle:checked
+    + .header-menu-button-container
+    .header-menu-button::after {
+    margin-top: 0px;
+    transform: rotate(-405deg);
+}
+
+.header-cta {
+    text-align: center;
+}
+
+@media (max-width: 1024px) {
+    .header-menu-button-container {
+        display: flex;
+    }
+
+    .header-menu {
+        position: absolute;
+        top: 0;
+        margin-top: 62.8px;
+        right: 0;
+        flex-direction: column;
+        width: 100vw;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #header-menu-toggle ~ .header-menu li {
+        height: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    #header-menu-toggle:checked ~ .header-menu li {
+        border: 1px solid var(--vulcan);
+        height: 5rem;
+        padding: 0.5rem;
+        transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .header-menu > li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0.5em 0;
+        width: 100%;
+        color: var(--vulcan);
+        background-color: #fff;
+    }
+
+    .header-menu > li:not(:last-child) {
+        border-bottom: 1px solid #444;
+    }
+}
+
+/* PIC BOOK  */
+
+.book-div {
+    position: relative;
+    text-align: center;
+    color: var(--vulcan);
+}
+.book-img {
+    width: 100%;
+}
+.book-txt {
+    position: absolute;
+    font-size: 2rem;
+    top: 13%;
+    left: 25%;
+}
+.book-txt-sub {
+    position: absolute;
+    font-size: 2rem;
+    top: 35%;
+    left: 25%;
+}
+
+@media (min-width: 1024px) {
+    .book-txt,
+    .book-txt-sub {
+        font-size: 4rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    .book-txt,
+    .book-txt-sub {
+        font-size: 4.5rem;
+    }
+}
