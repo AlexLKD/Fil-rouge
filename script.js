@@ -13,7 +13,7 @@ function moveToNextSlide() {
 // Reset the interval timer
 function resetInterval() {
     clearInterval(intervalId);
-    intervalId = setInterval(moveToNextSlide, 5000);
+    intervalId = setInterval(moveToNextSlide, 4000);
 }
 // Reset interval on click on one of the arrows
 nextButton.addEventListener("click", () => {
