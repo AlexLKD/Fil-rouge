@@ -8,7 +8,29 @@ let intervalId;
 
 // Move to the next slide
 function moveToNextSlide() {
-    slidesContainer.scrollLeft += slideWidth;
+    const maxScrollLeft =
+        slidesContainer.scrollWidth - slidesContainer.clientWidth + 1;
+    const nextScrollLeft = slidesContainer.scrollLeft + slideWidth;
+
+    // Check if reaching the last slide, then go back to the first slide
+    if (nextScrollLeft >= maxScrollLeft) {
+        slidesContainer.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+        slidesContainer.scrollTo({ left: nextScrollLeft, behavior: "smooth" });
+    }
+}
+// Move to the previous slide
+function moveToPrevSlide() {
+    const prevScrollLeft = slidesContainer.scrollLeft - slideWidth;
+    // Check if at the first slide, then go to the last slide
+    if (prevScrollLeft <= 0) {
+        slidesContainer.scrollTo({
+            left: slidesContainer.scrollWidth,
+            behavior: "smooth",
+        });
+    } else {
+        slidesContainer.scrollTo({ left: prevScrollLeft, behavior: "smooth" });
+    }
 }
 // Reset the interval timer
 function resetInterval() {
@@ -17,11 +39,11 @@ function resetInterval() {
 }
 // Reset interval on click on one of the arrows
 nextButton.addEventListener("click", () => {
-    slidesContainer.scrollLeft += slideWidth;
+    moveToNextSlide();
     resetInterval();
 });
 prevButton.addEventListener("click", () => {
-    slidesContainer.scrollLeft -= slideWidth;
+    moveToPrevSlide();
     resetInterval();
 });
 // Reset interval if scroll on boxes

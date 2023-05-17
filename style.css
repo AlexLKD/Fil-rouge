@@ -245,6 +245,7 @@ p {
     font-size: 2rem;
     top: 13%;
     left: 25%;
+    font-size: calc(2rem + (4rem - 2rem) * ((100vw - 10vw) / (30vw - 10vw)));
 }
 .book-txt-sub {
     position: absolute;
