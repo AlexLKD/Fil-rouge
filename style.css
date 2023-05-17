@@ -329,3 +329,6 @@ p {
     border-radius: 25px 25px 0px 0px;
     border-bottom: 2px solid var(--vulcan);
 }
+.classes-box-txt {
+    margin: 0.5rem;
+}
