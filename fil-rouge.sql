@@ -3,7 +3,6 @@ CREATE TABLE languages(
    name_language VARCHAR(100) NOT NULL,
    PRIMARY KEY(id_languages)
 );
-
 CREATE TABLE person(
    id_person INT AUTO_INCREMENT,
    lastname VARCHAR(100) NOT NULL,
@@ -11,6 +10,7 @@ CREATE TABLE person(
    email VARCHAR(100) NOT NULL UNIQUE,
    password VARCHAR(100) NOT NULL,
    PRIMARY KEY(id_person),
+   UNIQUE(email)
 );
 
 CREATE TABLE course(
@@ -18,9 +18,10 @@ CREATE TABLE course(
    date_course DATETIME NOT NULL,
    title_course VARCHAR(100) NOT NULL,
    difficulty VARCHAR(100) NOT NULL,
-   id_person INT,
+   id_person INT NOT NULL,
    id_languages INT NOT NULL,
    PRIMARY KEY(id_course),
+   FOREIGN KEY(id_difficulty) REFERENCES difficulty(id_difficulty),
    FOREIGN KEY(id_person) REFERENCES person(id_person),
    FOREIGN KEY(id_languages) REFERENCES languages(id_languages)
 );
@@ -31,4 +32,9 @@ CREATE TABLE learn(
    PRIMARY KEY(id_course, id_person),
    FOREIGN KEY(id_course) REFERENCES course(id_course),
    FOREIGN KEY(id_person) REFERENCES person(id_person)
+);
+
+CREATE TABLE difficulty(
+   id_difficulty COUNTER,
+   PRIMARY KEY(id_difficulty)
 );
