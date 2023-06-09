@@ -36,6 +36,6 @@ CREATE TABLE learn(
 );
 
 CREATE TABLE difficulty(
-   id_difficulty COUNTER,
+   id_difficulty SMALLINT AUTO_INCREMENT,
    PRIMARY KEY(id_difficulty)
 );
