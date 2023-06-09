@@ -3,6 +3,7 @@ CREATE TABLE languages(
    name_language VARCHAR(100) NOT NULL,
    PRIMARY KEY(id_languages)
 );
+
 CREATE TABLE person(
    id_person INT AUTO_INCREMENT,
    lastname VARCHAR(100) NOT NULL,
