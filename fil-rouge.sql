@@ -18,7 +18,7 @@ CREATE TABLE course(
    id_course INT AUTO_INCREMENT,
    date_course DATETIME NOT NULL,
    title_course VARCHAR(100) NOT NULL,
-   difficulty VARCHAR(100) NOT NULL,
+   id_difficulty VARCHAR(100) NOT NULL,
    id_person INT NOT NULL,
    id_languages INT NOT NULL,
    PRIMARY KEY(id_course),
