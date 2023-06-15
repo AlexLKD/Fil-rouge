@@ -3,7 +3,7 @@ const slide = document.querySelector(".classes-box");
 const prevButton = document.getElementById("slide-arrow-prev");
 const nextButton = document.getElementById("slide-arrow-next");
 
-let slideWidth = slide.clientWidth + 3;
+let slideWidth = slide.clientWidth + 4;
 let intervalId;
 
 // Move to the next slide
