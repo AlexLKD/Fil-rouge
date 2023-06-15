@@ -282,6 +282,11 @@ p {
     top: 35%;
     left: 25%;
 }
+.date-txt {
+    position: absolute;
+    font-size: 2rem;
+    top: 0;
+}
 
 @media (min-width: 1024px) {
     .book-txt,

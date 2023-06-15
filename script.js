@@ -50,3 +50,24 @@ prevButton.addEventListener("click", () => {
 slidesContainer.addEventListener("scroll", resetInterval);
 // Start the interval interval
 intervalId = setInterval(moveToNextSlide, 2000);
+
+// const dateElement = document.getElementById("date-txt");
+
+// // Obtenir la date actuelle en millisecondes depuis le 1er janvier 1970
+// const timestamp = Date.now();
+
+// // Créer un objet Date à partir du timestamp
+// const dateObj = new Date(timestamp);
+
+// // Récupérer les composants de la date (jour, mois, année, etc.)
+// const jour = dateObj.getDate();
+// const mois = dateObj.getMonth() + 1; // Les mois sont indexés à partir de 0
+// const annee = dateObj.getFullYear();
+
+// // Formater la date
+// const dateActuelle = `${jour}/${mois}/${annee}`;
+
+// // Modifier le contenu de l'élément <p> avec la date actuelle
+// dateElement.textContent = dateActuelle;
+const dateElement = document.getElementById("date-txt");
+dateElement.textContent = new Date().toLocaleDateString();

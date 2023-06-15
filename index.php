@@ -19,6 +19,7 @@
             <img class="book-img" src="img/book.jpg" alt="book" />
             <p class="book-txt">Formez</p>
             <p class="book-txt-sub">vous</p>
+            <p class="date-txt" id="date-txt"> a </p>
         </div>
         <section class="container">
             <article class="intro">
