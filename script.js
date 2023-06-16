@@ -14,7 +14,7 @@ function moveToNextSlide() {
     const nextScrollLeft = slidesContainer.scrollLeft + slideWidth;
 
     // Check if reaching the last slide, then go back to the first slide
-    if (nextScrollLeft >= maxScrollLeft) {
+    if (nextScrollLeft > maxScrollLeft) {
         slidesContainer.scrollTo({ left: 0, behavior: "smooth" });
     } else {
         slidesContainer.scrollTo({ left: nextScrollLeft, behavior: "smooth" });
@@ -24,7 +24,7 @@ function moveToNextSlide() {
 function moveToPrevSlide() {
     const prevScrollLeft = slidesContainer.scrollLeft - slideWidth;
     // Check if at the first slide, then go to the last slide
-    if (prevScrollLeft <= 0) {
+    if (prevScrollLeft < 0) {
         slidesContainer.scrollTo({
             left: slidesContainer.scrollWidth,
             behavior: "smooth",
