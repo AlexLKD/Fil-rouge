@@ -285,7 +285,15 @@ p {
 .date-txt {
     position: absolute;
     font-size: 2rem;
-    top: 0;
+    top: 35%;
+    left: 53%;
+}
+
+.date-txt-sub {
+    position: absolute;
+    font-size: 1rem;
+    top: 42%;
+    left: 61%;
 }
 
 @media (min-width: 1024px) {

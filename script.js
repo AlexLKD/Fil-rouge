@@ -69,5 +69,9 @@ intervalId = setInterval(moveToNextSlide, 2000);
 
 // // Modifier le contenu de l'élément <p> avec la date actuelle
 // dateElement.textContent = dateActuelle;
-const dateElement = document.getElementById("date-txt");
-dateElement.textContent = new Date().toLocaleDateString();
+document.getElementById("date-txt").textContent =
+    new Date().toLocaleDateString();
+document.getElementById("date-txt-sub").textContent = new Date().toLocaleString(
+    [],
+    { hour: "2-digit", minute: "2-digit" }
+);
