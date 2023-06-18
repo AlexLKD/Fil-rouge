@@ -54,72 +54,31 @@
                         &#8250;
                     </button>
                     <div class="classes-all-boxes" id="slides-container">
-                        <div class="classes-box">
-                            <a href="#">
-                                <img class="classes-img" src="flags/UK.png" alt="UK" />
-                                <h3>Anglais</h3>
-                                <p class="classes-box-txt">
-                                    Lorem ipsum dolor, sit amet consectetur
-                                    adipisicing elit. Officia nam illum odio
-                                    reiciendis necessitatibus!
-                                </p>
-                            </a>
-                        </div>
-                        <div class="classes-box">
-                            <a href="#">
-                                <img class="classes-img" src="flags/spain.png" alt="spain" />
-                                <h3>Espagnol</h3>
-                                <p class="classes-box-txt">
-                                    Lorem ipsum dolor, sit amet consectetur
-                                    adipisicing elit. Officia nam illum odio
-                                    reiciendis necessitatibus!
-                                </p>
-                            </a>
-                        </div>
-                        <div class="classes-box">
-                            <a href="#">
-                                <img class="classes-img" src="flags/germany.png" alt="germany" />
-                                <h3>Allemand</h3>
-                                <p class="classes-box-txt">
-                                    Lorem ipsum dolor, sit amet consectetur
-                                    adipisicing elit. Officia nam illum odio
-                                    reiciendis necessitatibus!
-                                </p>
-                            </a>
-                        </div>
-                        <div class="classes-box box-desktop">
-                            <a href="#">
-                                <img class="classes-img" src="flags/japan.png" alt="japan" />
-                                <h3>Japonais</h3>
-                                <p class="classes-box-txt">
-                                    Lorem ipsum dolor, sit amet consectetur
-                                    adipisicing elit. Officia nam illum odio
-                                    reiciendis necessitatibus!
-                                </p>
-                            </a>
-                        </div>
-                        <div class="classes-box box-desktop">
-                            <a href="#">
-                                <img class="classes-img" src="flags/korea.png" alt="korea" />
-                                <h3>Coréen</h3>
-                                <p class="classes-box-txt">
-                                    Lorem ipsum dolor, sit amet consectetur
-                                    adipisicing elit. Officia nam illum odio
-                                    reiciendis necessitatibus!
-                                </p>
-                            </a>
-                        </div>
-                        <div class="classes-box box-desktop">
-                            <a href="#">
-                                <img class="classes-img" src="flags/russia.png" alt="russia" />
-                                <h3>Russe</h3>
-                                <p class="classes-box-txt">
-                                    Lorem ipsum dolor, sit amet consectetur
-                                    adipisicing elit. Officia nam illum odio
-                                    reiciendis necessitatibus!
-                                </p>
-                            </a>
-                        </div>
+                        <?php
+                        $country = ['uk', 'spain', 'germany', 'japan', 'korea', 'russia'];
+                        $language = ['Anglais', 'Espagnol', 'Allemand', 'Japonais', 'Coréen', 'Russe'];
+                        $description = [
+                            'English, Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia nam illum odio reiciendis necessitatibus!',
+                            'Spanish, Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia nam illum odio reiciendis necessitatibus!',
+                            'German, Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia nam illum odio reiciendis necessitatibus!',
+                            'Japanese, Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia nam illum odio reiciendis necessitatibus!',
+                            'Korean, Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia nam illum odio reiciendis necessitatibus!',
+                            'Russian, Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia nam illum odio reiciendis necessitatibus!'
+                        ];
+
+                        for ($i = 0; $i < count($country); $i++) {
+                            echo '<div class="classes-box">';
+                            echo '<a href="#">';
+                            echo '<img class="classes-img" src="flags/' . $country[$i] . '.png" alt="' . $country[$i] . '" />';
+                            echo '<h3>' . $language[$i] . '</h3>';
+                            echo '<p class="classes-box-txt">';
+                            echo $description[$i];
+                            echo '</p>';
+                            echo '</a>';
+                            echo '</div>';
+                        }
+                        ?>
+
                     </div>
                 </div>
             </article>
