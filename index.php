@@ -54,15 +54,16 @@
                     </button>
                     <div class="classes-all-boxes" id="slides-container">
                         <?php
+                        $lorem = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia nam illum odio reiciendis necessitatibus!';
                         $country = ['uk', 'spain', 'germany', 'japan', 'korea', 'russia'];
                         $language = ['Anglais', 'Espagnol', 'Allemand', 'Japonais', 'Coréen', 'Russe'];
                         $description = [
-                            'English, Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia nam illum odio reiciendis necessitatibus!',
-                            'Spanish, Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia nam illum odio reiciendis necessitatibus!',
-                            'German, Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia nam illum odio reiciendis necessitatibus!',
-                            'Japanese, Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia nam illum odio reiciendis necessitatibus!',
-                            'Korean, Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia nam illum odio reiciendis necessitatibus!',
-                            'Russian, Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia nam illum odio reiciendis necessitatibus!'
+                            'English, ' . $lorem,
+                            'Spanish, ' . $lorem,
+                            'German, ' . $lorem,
+                            'Japanese, ' . $lorem,
+                            'Korean, ' . $lorem,
+                            'Russian, ' . $lorem,
                         ];
 
                         for ($i = 0; $i < count($country); $i++) {
