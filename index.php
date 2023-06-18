@@ -12,7 +12,6 @@
 <body>
     <?php
     include 'header.php';
-    // echo $header;
     ?>
     <main>
         <div class="book-div">
@@ -78,7 +77,6 @@
                             echo '</div>';
                         }
                         ?>
-
                     </div>
                 </div>
             </article>
