@@ -55,28 +55,26 @@
                     <div class="classes-all-boxes" id="slides-container">
                         <?php
                         $lorem = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia nam illum odio reiciendis necessitatibus!';
-                        $country = ['uk', 'spain', 'germany', 'japan', 'korea', 'russia'];
-                        $language = ['Anglais', 'Espagnol', 'Allemand', 'Japonais', 'Coréen', 'Russe'];
-                        $description = [
-                            'English, ' . $lorem,
-                            'Spanish, ' . $lorem,
-                            'German, ' . $lorem,
-                            'Japanese, ' . $lorem,
-                            'Korean, ' . $lorem,
-                            'Russian, ' . $lorem,
+                        $languages = [
+                            ['country' => 'uk', 'name' => 'Anglais', 'description' => 'English, ' . $lorem],
+                            ['country' => 'spain', 'name' => 'Espagnol', 'description' => 'Spanish, ' . $lorem],
+                            ['country' => 'germany', 'name' => 'Allemand', 'description' => 'German, ' . $lorem],
+                            ['country' => 'japan', 'name' => 'Japonais', 'description' => 'Japanese, ' . $lorem],
+                            ['country' => 'korea', 'name' => 'Coréen', 'description' => 'Korean, ' . $lorem],
+                            ['country' => 'russia', 'name' => 'Russe', 'description' => 'Russian, ' . $lorem],
                         ];
-
-                        for ($i = 0; $i < count($country); $i++) {
+                        for ($i = 0; $i < count($languages); $i++) {
                             echo '<div class="classes-box">';
                             echo '<a href="#">';
-                            echo '<img class="classes-img" src="flags/' . $country[$i] . '.png" alt="' . $country[$i] . '" />';
-                            echo '<h3>' . $language[$i] . '</h3>';
+                            echo '<img class="classes-img" src="flags/' . $languages[$i]['country'] . '.png" alt="' . $languages[$i]['country'] . '" />';
+                            echo '<h3>' . $languages[$i]['name'] . '</h3>';
                             echo '<p class="classes-box-txt">';
-                            echo $description[$i];
+                            echo $languages[$i]['description'];
                             echo '</p>';
                             echo '</a>';
                             echo '</div>';
                         }
+
                         ?>
                     </div>
                 </div>
