@@ -1,5 +1,6 @@
 .form-outline,
-.nav {
+.nav,
+.login-password {
     max-width: 50%;
     margin: 0 auto;
 }
@@ -9,4 +10,10 @@
 }
 .register-lnk {
     text-decoration: underline !important;
+}
+.forgot-password-txt,
+.continue-btn {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
 }

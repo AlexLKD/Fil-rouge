@@ -60,7 +60,7 @@
 
                     <div class="col-md-6 d-flex justify-content-center">
                         <!-- Simple link -->
-                        <a href="#!">Forgot password?</a>
+                        <a href="change_password.php">Forgot password?</a>
                     </div>
                 </div>
 
@@ -68,11 +68,6 @@
                 <button type="submit" class="btn btn-primary btn-block mb-4">
                     Sign in
                 </button>
-
-                <!-- Register buttons -->
-                <div class="text-center">
-                    <p>Not a member? <a class="register-lnk" href="#!">Register</a></p>
-                </div>
             </form>
         </div>
         <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
