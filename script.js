@@ -55,8 +55,18 @@ intervalId = setInterval(moveToNextSlide, 2000);
 // Get current date
 document.getElementById("date-txt").textContent =
     new Date().toLocaleDateString();
-// Get current hour and minute
-document.getElementById("date-txt-sub").textContent = new Date().toLocaleString(
-    [],
-    { hour: "2-digit", minute: "2-digit" }
-);
+// Get current hour, minute and second
+function updateClock() {
+    let formattedTime = new Date().toLocaleString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+    });
+    document.getElementById("date-txt-sub").textContent = formattedTime;
+}
+
+// update the clock
+updateClock();
+
+// refresh the clock every second
+setInterval(updateClock, 1000);
