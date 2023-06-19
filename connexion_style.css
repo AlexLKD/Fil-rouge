@@ -1,0 +1,12 @@
+.form-outline,
+.nav {
+    max-width: 50%;
+    margin: 0 auto;
+}
+.btn {
+    max-width: 40%;
+    margin: 0 auto;
+}
+.register-lnk {
+    text-decoration: underline !important;
+}
