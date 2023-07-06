@@ -41,7 +41,7 @@ session_start();
     <div class="tab-content">
         <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
             <form>
-                <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>" id="token-csrf">
+                <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>">
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                     <input type="email" id="loginName" class="form-control" />
@@ -80,45 +80,69 @@ session_start();
         </div>
         <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
             <form action="actions.php" method="POST" class="form-submit">
-                <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>" id="token-csrf">
+                <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>">
 
                 <!-- Firstname input -->
                 <div class="form-outline mb-4">
-                    <input type="text" id="registerFirstName" class="form-control" name="registerFirstName" />
+                    <input type="text" id="registerFirstName" class="form-control" name="registerFirstName" required />
                     <label class="form-label" for="registerFirstName">First name</label>
                 </div>
 
                 <!-- Lastname input -->
                 <div class="form-outline mb-4">
-                    <input type="text" id="registerLastName" class="form-control" name="registerLastName" />
+                    <input type="text" id="registerLastName" class="form-control" name="registerLastName" required />
                     <label class="form-label" for="registerLastName">Last name</label>
                 </div>
 
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                    <input type="email" id="registerEmail" class="form-control" name="registerEmail" />
+                    <input type="email" id="registerEmail" class="form-control" name="registerEmail" required />
                     <label class="form-label" for="registerEmail">Email</label>
                 </div>
 
                 <!-- Password input -->
                 <div class="form-outline mb-4">
-                    <input type="password" id="registerPassword" class="form-control" name="registerPassword" />
+                    <input type="password" id="registerPassword" class="form-control" name="registerPassword" required />
                     <label class="form-label" for="registerPassword">Password</label>
                 </div>
 
                 <!-- Repeat Password input -->
                 <div class="form-outline mb-4">
-                    <input type="password" id="registerRepeatPassword" class="form-control" name="registerRepeatPassword" />
+                    <input type="password" id="registerRepeatPassword" class="form-control" name="registerRepeatPassword" required />
                     <label class="form-label" for="registerRepeatPassword">Repeat password</label>
                 </div>
+                <?php if (isset($errorPassword)) : ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?= $errorPassword ?>
+                    </div>
+                <?php endif; ?>
 
-                <!-- Checkbox -->
+                <!-- Checkbox teacher/student-->
+                <p class="d-flex justify-content-center">Vous êtes :</p>
                 <div class="form-check d-flex justify-content-center mb-4">
-                    <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked aria-describedby="registerCheckHelpText" required />
-                    <label class="form-check-label" for="registerCheck">
+                    <input class="form-check-input me-2" type="checkbox" name="roleStudent" id="registerStudent" aria-describedby="registerCheckHelpText" />
+                    <label class="form-check-label" for="registerStudent">
+                        Etudiant
+                    </label>
+                    <input class="form-check-input me-2" type="checkbox" name="roleTeacher" id="registerTeacher" aria-describedby="registerCheckHelpText" />
+                    <label class="form-check-label" for="registerTeacher">
+                        Professeur
+                    </label>
+                </div>
+                <?php if (isset($errorTypeOfUser)) : ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?= $errorTypeOfUser ?>
+                    </div>
+                <?php endif; ?>
+
+                <!-- Checkbox terms-->
+                <div class="form-check d-flex justify-content-center mb-4">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="registerTerms" checked aria-describedby="registerCheckHelpText" required />
+                    <label class="form-check-label" for="registerTerms">
                         I have read and agree to the terms
                     </label>
                 </div>
+
 
                 <!-- Submit button -->
                 <button type="submit" name="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
