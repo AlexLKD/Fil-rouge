@@ -1,3 +1,10 @@
+<?php
+require 'includes/_database.php';
+// require 'includes/_functions.php';
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

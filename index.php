@@ -1,3 +1,12 @@
+<?php
+require 'includes/_database.php';
+// require 'includes/_functions.php';
+
+session_start();
+$_SESSION['token'] = md5(uniqid(mt_rand(), true));
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -54,27 +63,18 @@
                     </button>
                     <div class="classes-all-boxes" id="slides-container">
                         <?php
-                        $lorem = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia nam illum odio reiciendis necessitatibus!';
-                        $languages = [
-                            ['country' => 'uk', 'name' => 'Anglais', 'description' => 'English, ' . $lorem],
-                            ['country' => 'spain', 'name' => 'Espagnol', 'description' => 'Spanish, ' . $lorem],
-                            ['country' => 'germany', 'name' => 'Allemand', 'description' => 'German, ' . $lorem],
-                            ['country' => 'japan', 'name' => 'Japonais', 'description' => 'Japanese, ' . $lorem],
-                            ['country' => 'korea', 'name' => 'Coréen', 'description' => 'Korean, ' . $lorem],
-                            ['country' => 'russia', 'name' => 'Russe', 'description' => 'Russian, ' . $lorem],
-                        ];
-                        for ($i = 0; $i < count($languages); $i++) {
+                        $query = $dbCo->prepare("SELECT country, name, description FROM languages");
+                        $query->execute();
+                        $languages = $query->fetchAll();
+                        foreach ($languages as $language) {
                             echo '<div class="classes-box">';
                             echo '<a href="#">';
-                            echo '<img class="classes-img" src="flags/' . $languages[$i]['country'] . '.png" alt="' . $languages[$i]['country'] . '" />';
-                            echo '<h3>' . $languages[$i]['name'] . '</h3>';
-                            echo '<p class="classes-box-txt">';
-                            echo $languages[$i]['description'];
-                            echo '</p>';
+                            echo '<img class="classes-img" src="flags/' . $language['country'] . '.png" alt="' . $language['country'] . '" />';
+                            echo '<h3>' . $language['name'] . '</h3>';
+                            echo '<p class="classes-box-txt">' . $language['description'] . '</p>';
                             echo '</a>';
                             echo '</div>';
                         }
-
                         ?>
                     </div>
                 </div>
