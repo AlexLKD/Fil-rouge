@@ -11,18 +11,18 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="connexion_style.css" />
+    <link rel="stylesheet" href="CSS/style.css" />
+    <link rel="stylesheet" href="CSS/login_style.css" />
 </head>
 
 <body>
     <?php
-    include 'header.php';
+    include 'includes/header.php';
     ?>
     <!-- Pills navs -->
     <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
         <li class="nav-item login-password" role="presentation">
-            <a class="nav-link active" id="tab-login" href="connexion.php" role="tab" aria-controls="pills-login" aria-selected="true">Login</a>
+            <a class="nav-link active" id="tab-login" href="login.php" role="tab" aria-controls="pills-login" aria-selected="true">Login</a>
         </li>
     </ul>
     <!-- Pills navs -->
