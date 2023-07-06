@@ -41,6 +41,7 @@ session_start();
     <div class="tab-content">
         <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
             <form>
+                <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>" id="token-csrf">
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                     <input type="email" id="loginName" class="form-control" />
@@ -78,17 +79,19 @@ session_start();
             </form>
         </div>
         <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-            <form>
-                <!-- Name input -->
-                <div class="form-outline mb-4">
-                    <input type="text" id="registerName" class="form-control" />
-                    <label class="form-label" for="registerName">Name</label>
-                </div>
+            <form action="actions.php" method="POST" class="form-submit">
+                <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>" id="token-csrf">
 
-                <!-- Username input -->
+                <!-- Firstname input -->
                 <div class="form-outline mb-4">
                     <input type="text" id="registerUsername" class="form-control" />
-                    <label class="form-label" for="registerUsername">Username</label>
+                    <label class="form-label" for="registerUsername">First name</label>
+                </div>
+
+                <!-- Lastname input -->
+                <div class="form-outline mb-4">
+                    <input type="text" id="registerName" class="form-control" />
+                    <label class="form-label" for="registerName">Last name</label>
                 </div>
 
                 <!-- Email input -->
@@ -111,7 +114,7 @@ session_start();
 
                 <!-- Checkbox -->
                 <div class="form-check d-flex justify-content-center mb-4">
-                    <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked aria-describedby="registerCheckHelpText" />
+                    <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked aria-describedby="registerCheckHelpText" required />
                     <label class="form-check-label" for="registerCheck">
                         I have read and agree to the terms
                     </label>
