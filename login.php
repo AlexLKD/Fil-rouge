@@ -84,31 +84,31 @@ session_start();
 
                 <!-- Firstname input -->
                 <div class="form-outline mb-4">
-                    <input type="text" id="registerUsername" class="form-control" />
-                    <label class="form-label" for="registerUsername">First name</label>
+                    <input type="text" id="registerFirstName" class="form-control" name="registerFirstName" />
+                    <label class="form-label" for="registerFirstName">First name</label>
                 </div>
 
                 <!-- Lastname input -->
                 <div class="form-outline mb-4">
-                    <input type="text" id="registerName" class="form-control" />
-                    <label class="form-label" for="registerName">Last name</label>
+                    <input type="text" id="registerLastName" class="form-control" name="registerLastName" />
+                    <label class="form-label" for="registerLastName">Last name</label>
                 </div>
 
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                    <input type="email" id="registerEmail" class="form-control" />
+                    <input type="email" id="registerEmail" class="form-control" name="registerEmail" />
                     <label class="form-label" for="registerEmail">Email</label>
                 </div>
 
                 <!-- Password input -->
                 <div class="form-outline mb-4">
-                    <input type="password" id="registerPassword" class="form-control" />
+                    <input type="password" id="registerPassword" class="form-control" name="registerPassword" />
                     <label class="form-label" for="registerPassword">Password</label>
                 </div>
 
                 <!-- Repeat Password input -->
                 <div class="form-outline mb-4">
-                    <input type="password" id="registerRepeatPassword" class="form-control" />
+                    <input type="password" id="registerRepeatPassword" class="form-control" name="registerRepeatPassword" />
                     <label class="form-label" for="registerRepeatPassword">Repeat password</label>
                 </div>
 
@@ -121,9 +121,7 @@ session_start();
                 </div>
 
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-3">
-                    Sign in
-                </button>
+                <button type="submit" name="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
             </form>
         </div>
     </div>
