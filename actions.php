@@ -42,18 +42,14 @@ if (isset($_POST['submit'])) {
     $repeatPassword = $_POST['registerRepeatPassword'];
     $typeOfUser = '';
 
-    if (isset($_POST['submit'])) {
-        // ...
-
-        $roleStudent = isset($_POST['inlineRadioOptions']) && $_POST['inlineRadioOptions'] === 'registerStudent';
-        $roleTeacher = isset($_POST['inlineRadioOptions']) && $_POST['inlineRadioOptions'] === 'registerTeacher';
-        if ($roleStudent && !$roleTeacher) {
-            $typeOfUser = '1'; // student
-        } elseif (!$roleStudent && $roleTeacher) {
-            $typeOfUser = '2'; // teacher
-        } else {
-            $errorTypeOfUser = 'Veuillez sélectionner une seule option (Étudiant ou Professeur).';
-        }
+    $roleStudent = isset($_POST['inlineRadioOptions']) && $_POST['inlineRadioOptions'] === 'registerStudent';
+    $roleTeacher = isset($_POST['inlineRadioOptions']) && $_POST['inlineRadioOptions'] === 'registerTeacher';
+    if ($roleStudent && !$roleTeacher) {
+        $typeOfUser = '1'; // student
+    } elseif (!$roleStudent && $roleTeacher) {
+        $typeOfUser = '2'; // teacher
+    } else {
+        $errorTypeOfUser = 'Veuillez sélectionner une option (Étudiant ou Professeur).';
     }
 
     if ($password !== $repeatPassword) {

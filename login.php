@@ -35,7 +35,6 @@ session_start();
             <a class="nav-link" id="tab-register" data-mdb-toggle="pill" href="#pills-register" role="tab" aria-controls="pills-register" aria-selected="false">Register</a>
         </li>
     </ul>
-    <!-- Pills navs -->
 
     <!-- Pills content -->
     <div class="tab-content">
@@ -122,7 +121,7 @@ session_start();
                 <div class="d-flex justify-content-center">
                     <div class="form-check form-check-inline">
                         <input type="hidden" name="roleStudent">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="registerStudent" value="registerStudent" />
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="registerStudent" checked value="registerStudent" />
                         <label class="form-check-label" for="registerStudent">Etudiant</label>
                     </div>
 
