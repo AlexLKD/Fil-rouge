@@ -11,28 +11,23 @@ if (!(array_key_exists('HTTP_REFERER', $_SERVER)) && str_contains($_SERVER['HTTP
     exit;
 }
 
+$target_dir = dirname(__FILE__) . "/files/";
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-// if (isset($_POST['submit'])) {
-//     $firstname = $_POST['registerFirstName'];
-//     $lastname = $_POST['registerLastName'];
-//     $email = $_POST['registerEmail'];
-//     $password = $_POST['registerPassword'];
+if ($fileType != "pdf") {
+    echo "Sorry, only PDF files are allowed.";
+    header('Location: dashboard.php?msg="Sorry, only PDF files are allowed."');
+    exit;
+}
+if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+    header('Location: dashboard.php?msg=' . urlencode('The file "' . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . '" has been uploaded.'));
+    exit;
+} else {
+    header('"Sorry, there was an error uploading your file."');
+    exit;
+}
 
-//     // Crypter le mot de passe
-//     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-//     // Effectuer la requête d'insertion
-//     $query = $dbCo->prepare("INSERT INTO users (firstname, lastname, email, password) VALUES (:firstname, :lastname, :email, :password)");
-//     $isOk = $query->execute([
-//         ':firstname' => $firstname,
-//         ':lastname' => $lastname,
-//         ':email' => $email,
-//         ':password' => $hashedPassword
-//     ]);
-
-//     header('Location: login.php?msg=' . ($isOk ? 'User ajouté' : 'y\'a un souci'));
-//     exit;
-// }
 
 if (isset($_POST['submit'])) {
     $firstName = $_POST['registerFirstName'];
