@@ -45,8 +45,8 @@ if (isset($_POST['submit'])) {
     if (isset($_POST['submit'])) {
         // ...
 
-        $roleStudent = isset($_POST['roleStudent']);
-        $roleTeacher = isset($_POST['roleTeacher']);
+        $roleStudent = isset($_POST['inlineRadioOptions']) && $_POST['inlineRadioOptions'] === 'registerStudent';
+        $roleTeacher = isset($_POST['inlineRadioOptions']) && $_POST['inlineRadioOptions'] === 'registerTeacher';
         if ($roleStudent && !$roleTeacher) {
             $typeOfUser = '1'; // student
         } elseif (!$roleStudent && $roleTeacher) {
@@ -55,7 +55,6 @@ if (isset($_POST['submit'])) {
             $errorTypeOfUser = 'Veuillez sélectionner une seule option (Étudiant ou Professeur).';
         }
     }
-
 
     if ($password !== $repeatPassword) {
         $errorPassword = 'Les mots de passe ne correspondent pas.';

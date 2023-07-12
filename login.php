@@ -121,13 +121,15 @@ session_start();
                 <p class="d-flex justify-content-center"> Vous êtes :</p>
                 <div class="d-flex justify-content-center">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
-                        <label class="form-check-label" for="inlineRadio1">Etudiant</label>
+                        <input type="hidden" name="roleStudent">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="registerStudent" value="registerStudent" />
+                        <label class="form-check-label" for="registerStudent">Etudiant</label>
                     </div>
 
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
-                        <label class="form-check-label" for="inlineRadio2">Professeur</label>
+                        <input type="hidden" name="roleTeacher">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="registerTeacher" value="registerTeacher" />
+                        <label class="form-check-label" for="registerTeacher">Professeur</label>
                     </div>
                 </div>
                 <?php if (isset($errorTypeOfUser)) : ?>
