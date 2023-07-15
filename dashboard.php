@@ -26,7 +26,7 @@ session_start();
     include 'includes/header.php';
     ?>
     <main>
-        <form action="actions.php" method="post" enctype="multipart/form-data">
+        <form action="uploadpdf.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>">
             <input type="file" name="fileToUpload" id="fileToUpload">
             <input type="submit" value="Upload PDF" name="submit">
