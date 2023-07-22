@@ -57,7 +57,8 @@ $_SESSION['token'] = md5(uniqid(mt_rand(), true));
                         $languages = $query->fetchAll();
                         foreach ($languages as $language) {
                             echo '<div class="classes-box">';
-                            echo '<a href="#">';
+                            $languageLink = 'language.php?country=' . urlencode($language['country']);
+                            echo '<a href="' . $languageLink . '">';
                             echo '<img class="classes-img" src="flags/' . $language['country'] . '.png" alt="' . $language['country'] . '" />';
                             echo '<h3>' . $language['name'] . '</h3>';
                             echo '<p class="classes-box-txt">' . $language['description'] . '</p>';
