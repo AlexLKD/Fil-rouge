@@ -1,3 +1,5 @@
 .env
 vendor
 files
+flags
+img
