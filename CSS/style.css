@@ -425,6 +425,7 @@ p {
 .slide-arrow {
     position: absolute;
     display: flex;
+    align-items: center;
     top: 0;
     bottom: 0;
     margin: auto;
