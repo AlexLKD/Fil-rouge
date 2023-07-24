@@ -123,35 +123,6 @@ p {
     margin: 0 0.4rem;
     overflow: hidden;
 }
-/* .header-lnk {
-    position: relative;
-}
-.header-lnk::after {
-    content: "";
-    display: block;
-    height: 0.25rem;
-    width: 0;
-    position: absolute;
-    left: 0;
-    bottom: -0.5rem;
-    background-color: red;
-    transition: width 0.3s ease;
-}
-.nav-lnk {
-    display: inline-block;
-    color: #fff;
-    font-size: 1.5rem;
-    transition: border 0.5s ease;
-}
-
-.nav-lik.active::after,
-.nav-link:hover::after {
-    width: 100%;
-}
-
-.nav-lnk.active {
-    color: blue;
-} */
 
 .header-menu-button-container {
     display: none;
