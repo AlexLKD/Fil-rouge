@@ -26,14 +26,32 @@ session_start();
     include 'includes/header.php';
     ?>
     <main>
-        <form action="uploadpdf.php" method="post" enctype="multipart/form-data">
+        <form class="upload-form" action="uploadpdf.php" method="post" enctype="multipart/form-data">
+            <input class="upload-ttl" type="text" name="title_course" placeholder="Title of the Course" required>
             <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>">
+            <label>Difficulté :</label>
+            <div class="upload-difficulty">
+                <input type="radio" name="id_difficulty" value="1" required> Débutant
+                <input type="radio" name="id_difficulty" value="2" required> Intermédiaire
+                <input type="radio" name="id_difficulty" value="3" required> Expert
+            </div>
+            <label>Langage:</label>
+            <select class="upload-language-option" name="id_languages" required>
+                <?php
+                $query = $dbCo->prepare("SELECT id_language, name FROM languages");
+                $query->execute();
+                $languages = $query->fetchAll();
+                foreach ($languages as $language) {
+                    echo '<option value="' . $language['id_language'] . '">' . $language['name'] . '</option>';
+                }
+                ?>
+            </select>
             <input type="file" name="fileToUpload" id="fileToUpload">
-            <input type="submit" value="Upload PDF" name="submit">
+            <input class="upload-btn" type="submit" value="Envoyer le cours" name="submit">
         </form>
         <?php
         if (array_key_exists('msg', $_GET)) {
-            echo '<p class="task-info">' . $_GET['msg'] . '</p>';
+            echo '<p class="upload-course-info">' . $_GET['msg'] . '</p>';
         }
         ?>
     </main>

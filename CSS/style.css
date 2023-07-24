@@ -396,6 +396,7 @@ p {
 .slide-arrow {
     position: absolute;
     display: flex;
+    align-items: center;
     top: 0;
     bottom: 0;
     margin: auto;
@@ -438,4 +439,37 @@ p {
         width: 35%;
         margin: 0;
     }
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upload-ttl {
+    width: 80%;
+    margin: 1rem auto;
+}
+
+.upload-difficulty {
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    margin-bottom: 1rem;
+}
+
+.upload-language-option {
+    width: 30%;
+    margin-bottom: 1rem;
+}
+
+.upload-btn {
+    margin-top: 1rem;
+}
+
+.upload-course-info {
+    width: 50%;
+    text-align: center;
+    margin: 0.5rem auto;
 }

@@ -7,17 +7,6 @@ $_SESSION['token'] = md5(uniqid(mt_rand(), true));
 
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="CSS/style.css" />
-</head>
-
 <body>
     <?php
     require 'includes/header.php';
@@ -68,7 +57,8 @@ $_SESSION['token'] = md5(uniqid(mt_rand(), true));
                         $languages = $query->fetchAll();
                         foreach ($languages as $language) {
                             echo '<div class="classes-box">';
-                            echo '<a href="#">';
+                            $languageLink = 'language.php?country=' . urlencode($language['country']);
+                            echo '<a href="' . $languageLink . '">';
                             echo '<img class="classes-img" src="flags/' . $language['country'] . '.png" alt="' . $language['country'] . '" />';
                             echo '<h3>' . $language['name'] . '</h3>';
                             echo '<p class="classes-box-txt">' . $language['description'] . '</p>';
