@@ -24,12 +24,14 @@ if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     $title_course = $_POST['title_course'];
     $id_difficulty = $_POST['id_difficulty'];
     $id_languages = $_POST['id_languages'];
-    $query = $dbCo->prepare("INSERT INTO course (id_course, date_course, title_course, id_difficulty, id_languages) 
-    VALUES (NULL, NOW(), :title_course, :id_difficulty, :id_languages)");
+    $file_name = htmlspecialchars(basename($_FILES["fileToUpload"]["name"]));
+    $query = $dbCo->prepare("INSERT INTO course (id_course, date_course, title_course, id_difficulty, id_languages, file_name) 
+    VALUES (NULL, NOW(), :title_course, :id_difficulty, :id_languages, :file_name)");
     $isOk = $query->execute([
         ':title_course' => $title_course,
         ':id_difficulty' => $id_difficulty,
-        ':id_languages' => $id_languages
+        ':id_languages' => $id_languages,
+        ':file_name' => $file_name
     ]);
     header('Location: dashboard.php?msg=' . urlencode('The file "' . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . '" has been uploaded.'));
     exit;
