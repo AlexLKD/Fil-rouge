@@ -1,6 +1,7 @@
 <?php
 require 'includes/_database.php';
 session_start();
+print_r($_POST);
 
 if (!(array_key_exists('HTTP_REFERER', $_SERVER)) && str_contains($_SERVER['HTTP_REFERER'], $_ENV["URL"])) {
     header('Location: index.php?msg=error_referer');
@@ -42,7 +43,62 @@ if (isset($_POST['submit'])) {
             ':password' => $hashedPassword,
             ':typeOfUser' => $typeOfUser
         ]);
-        // header('Location: login.php?msg=' . ($isOk ? 'User ajouté' : 'y\'a un souci'));
-        // exit;
+        header('Location: login.php?msg=' . ($isOk ? 'User ajouté' : 'y\'a un souci'));
+        exit;
     }
+}
+
+if (isset($_POST['login'])) {
+    $emailOrUsername = $_POST['loginName'];
+    $password = $_POST['loginPassword'];
+
+    // Replace 'your_db_host', 'your_db_username', 'your_db_password', and 'your_db_name' with your actual database credentials
+    $dbCo = new mysqli('localhost', 'phplocal', 'phplocal', 'fil-rouge');
+
+    if ($dbCo->connect_error) {
+        die("Connection failed: " . $dbCo->connect_error);
+    }
+
+    // Prepare the query with placeholders
+    $query = $dbCo->prepare("SELECT * FROM users WHERE email = ? LIMIT 1");
+
+    if ($query) {
+        // Bind the parameters to the placeholders
+        $query->bind_param("s", $emailOrUsername);
+
+        // Execute the query
+        $query->execute();
+
+        // Get the result
+        $result = $query->get_result();
+
+        // Check if a row is returned
+        if ($result->num_rows == 1) {
+            // Fetch the user data
+            $user = $result->fetch_assoc();
+
+            // Verify the password
+            if (password_verify($password, $user['password'])) {
+                // Password is correct, user is valid
+                $_SESSION['user_id'] = $user['id_person'];
+                $_SESSION['user_firstname'] = $user['firstname'];
+                $_SESSION['user_lastname'] = $user['lastname'];
+                // ... store other user data in session if needed
+
+                // Redirect to the dashboard or other authent   icated pages
+                header('Location: index.php');
+                exit();
+            } else {
+                header('Location: login.php?msg="Mot de passe incorrect"');
+                exit();
+            }
+        } else {
+            header('Location: login.php?msg="Utilisateur introuvable"');
+        }
+    }
+    $query->close();
+    $dbCo->close();
+    // if (isset($error)) {
+    //     echo $error;
+    // }
 }

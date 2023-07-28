@@ -2,6 +2,7 @@
 require 'includes/_database.php';
 // require 'includes/_functions.php';
 session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +29,9 @@ session_start();
     <main>
         <form class="upload-form" action="uploadpdf.php" method="post" enctype="multipart/form-data">
             <input class="upload-ttl" type="text" name="title_course" placeholder="Title of the Course" required>
+
             <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>">
+
             <label>Difficulté :</label>
             <div class="upload-difficulty">
                 <input type="radio" name="id_difficulty" value="1" required> Débutant
