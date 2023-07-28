@@ -36,7 +36,7 @@ session_start();
                 <input type="radio" name="id_difficulty" value="3" required> Expert
             </div>
             <label>Langage:</label>
-            <select class="upload-language-option" name="id_languages" required>
+            <select class="upload-language-option" name="id_language" required>
                 <?php
                 $query = $dbCo->prepare("SELECT id_language, name FROM languages");
                 $query->execute();

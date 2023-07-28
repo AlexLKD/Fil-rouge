@@ -23,15 +23,15 @@ if ($fileType != "pdf") {
 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     $title_course = $_POST['title_course'];
     $id_difficulty = $_POST['id_difficulty'];
-    $id_languages = $_POST['id_languages'];
-    $query = $dbCo->prepare("INSERT INTO course (id_course, date_course, title_course, id_difficulty, id_languages) 
-    VALUES (NULL, NOW(), :title_course, :id_difficulty, :id_languages)");
+    $id_languages = $_POST['id_language'];
+    $query = $dbCo->prepare("INSERT INTO course (id_course, date_course, title_course, id_difficulty, id_language) 
+    VALUES (NULL, NOW(), :title_course, :id_difficulty, :id_language)");
     $isOk = $query->execute([
         ':title_course' => $title_course,
         ':id_difficulty' => $id_difficulty,
-        ':id_languages' => $id_languages
+        ':id_language' => $id_languages
     ]);
-    header('Location: dashboard.php?msg=' . urlencode('The file "' . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . '" has been uploaded.'));
+    header('Location: dashboard.php?msg=' . urlencode('Le fichier "' . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . '" a été envoyé.'));
     exit;
 } else {
     header('"Sorry, there was an error uploading your file."');
