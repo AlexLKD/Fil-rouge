@@ -80,7 +80,6 @@ p {
         padding: 0.5rem 1rem;
         border-radius: 1rem;
         font-weight: bold;
-        font-size: 0.9rem;
         color: #fff;
         text-transform: uppercase;
         text-decoration: none;
@@ -119,10 +118,9 @@ p {
     flex-direction: row;
     align-items: center;
 }
-.header-lnk {
+.header-menu > li {
     margin: 0 0.4rem;
     overflow: hidden;
-    font-size: 0.6rem;
 }
 
 .header-menu-button-container {
@@ -224,10 +222,15 @@ p {
         color: var(--vulcan);
         background-color: #fff;
     }
+}
 
-    /* .header-menu > li:not(:last-child) {
-        border-bottom: 1px solid #444;
-    } */
+@media (min-width: 1024px) {
+    .header-lnk {
+        font-size: 0.6rem;
+    }
+    .header-cta {
+        font-size: 0.6rem;
+    }
 }
 
 /* PIC BOOK  */
