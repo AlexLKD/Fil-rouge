@@ -83,6 +83,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['user_id'] = $user['id_person'];
                 $_SESSION['user_firstname'] = $user['firstname'];
                 $_SESSION['user_lastname'] = $user['lastname'];
+                $_SESSION['type_of_user'] = $user['type_of_user'];
                 // ... store other user data in session if needed
 
                 // Redirect to the dashboard or other authent   icated pages

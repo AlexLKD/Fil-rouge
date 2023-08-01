@@ -42,21 +42,23 @@ if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     $title_course = $_POST['title_course'];
     $id_difficulty = $_POST['id_difficulty'];
     $id_language = $_POST['id_language'];
-    // $id_person = $_SESSION['user_id'];
+    $id_person_teacher = $_SESSION['user_id']; // Get the ID of the person adding the file
+
     // Get the name of the uploaded file
     $file_name = htmlspecialchars(basename($_FILES["fileToUpload"]["name"]));
+
     // Prepare the query to insert the data into the "course" table
     $query = $dbCo->prepare("INSERT INTO course (id_course, date_course, title_course, 
-    id_difficulty, id_language, file_name) 
-    VALUES (NULL, NOW(), :title_course, :id_difficulty, :id_language, :file_name)");
+    id_difficulty, id_person_teacher, id_language, file_name) 
+    VALUES (NULL, NOW(), :title_course, :id_difficulty, :id_person_teacher, :id_language, :file_name)");
+
     // Execute the query with the form data
     $isOk = $query->execute([
         ':title_course' => strip_tags($title_course),
         ':id_difficulty' => strip_tags($id_difficulty),
-        ':id_language' => strip_tags($id_language),
+        ':id_person_teacher' => strip_tags($id_person_teacher), // Insert the teacher's ID
         ':id_language' => strip_tags($id_language),
         ':file_name' => strip_tags($file_name)
-        // ':id_person' => strip_tags($id_person),
     ]);
     // Redirect back to the dashboard with a success message
     header('Location: dashboard.php?msg=' . urlencode('The file "' .
