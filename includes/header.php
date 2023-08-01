@@ -27,8 +27,15 @@
         <li><a class="header-lnk" href="#">Formations</a></li>
         <li><a class="header-lnk" href="#">Qui sommes-nous</a></li>
         <li><a class="header-lnk" href="#">Contacts</a></li>
-        <li class="header-cta-desktop cta-desktop">
-            <a class="header-cta cta" href="login.php">Se connecter</a>
-        </li>
+        <?php if (isset($_SESSION['user_id'])) : ?>
+            <li class="header-cta-desktop cta-desktop">
+                <a class="header-cta cta" href="logout.php">Se déconnecter</a>
+            </li>
+        <?php else : ?>
+            <li class="header-cta-desktop cta-desktop">
+                <a class="header-cta cta" href="login.php">Se connecter</a>
+            </li>
+        <?php endif; ?>
     </ul>
+
 </header>
