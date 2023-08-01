@@ -24,7 +24,20 @@
     </label>
     <ul class="header-menu">
         <li><a class="header-lnk" href="PHP/index.php">Accueil</a></li>
-        <li><a class="header-lnk" href="#">Formations</a></li>
+        <li class="dropdown">
+            <a class="header-lnk" href="#">Formations</a>
+            <ul class="dropdown-content">
+                <?php
+                $query = $dbCo->prepare("SELECT country, name, id_language, name FROM languages");
+                $query->execute();
+                $languages = $query->fetchAll();
+                foreach ($languages as $language) {
+                    $languageLink = 'language.php?country=' . urlencode($language['country']);
+                    echo '<li><a href="' . $languageLink . '">' . $language['name'] . '</a></li>';
+                }
+                ?>
+            </ul>
+        </li>
         <li><a class="header-lnk" href="#">Qui sommes-nous</a></li>
         <li><a class="header-lnk" href="#">Contacts</a></li>
         <?php if (isset($_SESSION['user_id'])) : ?>
