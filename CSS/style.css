@@ -119,9 +119,10 @@ p {
     flex-direction: row;
     align-items: center;
 }
-.header-menu > li {
+.header-lnk {
     margin: 0 0.4rem;
     overflow: hidden;
+    font-size: 0.6rem;
 }
 
 .header-menu-button-container {

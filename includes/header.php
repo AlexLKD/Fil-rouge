@@ -28,6 +28,7 @@
         <li><a class="header-lnk" href="#">Qui sommes-nous</a></li>
         <li><a class="header-lnk" href="#">Contacts</a></li>
         <?php if (isset($_SESSION['user_id'])) : ?>
+            <li><a class="header-lnk" href="#">Mon compte</a></li>
             <li class="header-cta-desktop cta-desktop">
                 <a class="header-cta cta" href="#" onclick="confirmLogout()">Se déconnecter</a>
             </li>
