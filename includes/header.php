@@ -29,7 +29,7 @@
         <li><a class="header-lnk" href="#">Contacts</a></li>
         <?php if (isset($_SESSION['user_id'])) : ?>
             <li class="header-cta-desktop cta-desktop">
-                <a class="header-cta cta" href="logout.php">Se déconnecter</a>
+                <a class="header-cta cta" href="#" onclick="confirmLogout()">Se déconnecter</a>
             </li>
         <?php else : ?>
             <li class="header-cta-desktop cta-desktop">
@@ -37,5 +37,16 @@
             </li>
         <?php endif; ?>
     </ul>
+    <script>
+        function confirmLogout() {
+            if (confirm("Are you sure you want to log out?")) {
+                window.location.href = "logout.php"; // Redirect to the logout page if confirmed
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+
 
 </header>
