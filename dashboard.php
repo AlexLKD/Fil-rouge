@@ -29,7 +29,7 @@ session_start();
                 $query->execute([':user_id' => $user_id]);
                 $uploadedCourses = $query->fetchAll(PDO::FETCH_ASSOC);
             ?>
-                <?php if (count($uploadedCourses) > 0) : ?>
+                <?php if (count($uploadedCourses) >= 0) : ?>
                     <h4>Courses Uploaded by You </h4>
                     <ul>
                         <?php foreach ($uploadedCourses as $course) : ?>
@@ -37,6 +37,7 @@ session_start();
                             <!-- Display other course information as needed -->
                         <?php endforeach; ?>
                     </ul>
+                    <a class="" href="pdf_form.php"><img class="plus-btn" src="img/plussign" alt=""></a>
                 <?php endif; ?>
                 <form id="userInfoForm" action="actions.php" method="post">
                     <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>">

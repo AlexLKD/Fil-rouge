@@ -523,3 +523,8 @@ p {
 .hidden {
     display: none;
 }
+.plus-btn {
+    width: 40px;
+    border: solid 3px var(--vulcan);
+    border-radius: 25px;
+}
