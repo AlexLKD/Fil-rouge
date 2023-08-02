@@ -38,8 +38,8 @@
             ?>
             <!-- </div> -->
         </li>
-        <li><a class="header-lnk" href="#">Qui sommes-nous</a></li>
-        <li><a class="header-lnk" href="#">Contacts</a></li>
+        <li><a class="header-lnk" href="about.php">Qui sommes-nous</a></li>
+        <li><a class="header-lnk" href="contact.php">Contacts</a></li>
         <?php if (isset($_SESSION['user_id'])) : ?>
             <li><a class="header-lnk" href="dashboard.php">Mon compte</a></li>
             <li class="header-cta-desktop cta-desktop">
@@ -51,15 +51,7 @@
             </li>
         <?php endif; ?>
     </ul>
-    <script>
-        function confirmLogout() {
-            if (confirm("Are you sure you want to log out?")) {
-                window.location.href = "logout.php"; // Redirect to the logout page if confirmed
-                return true;
-            } else {
-                return false;
-            }
-        }
+    <script src="JS/functions.js">
     </script>
 
 

@@ -23,7 +23,21 @@ session_start();
                 $user_name = $_SESSION['user_lastname'];
                 $user_firstname = $_SESSION['user_firstname'];
                 $user_email = $_SESSION['user_email'];
+
+                // Fetch courses uploaded by the user with type_of_user === 2
+                $query = $dbCo->prepare("SELECT * FROM course WHERE id_person_teacher = :user_id");
+                $query->execute([':user_id' => $user_id]);
+                $uploadedCourses = $query->fetchAll(PDO::FETCH_ASSOC);
             ?>
+                <?php if (count($uploadedCourses) > 0) : ?>
+                    <h4>Courses Uploaded by You </h4>
+                    <ul>
+                        <?php foreach ($uploadedCourses as $course) : ?>
+                            <li><?php echo $course['title_course']; ?></li>
+                            <!-- Display other course information as needed -->
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
                 <form id="userInfoForm" action="actions.php" method="post">
                     <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>">
 
@@ -43,12 +57,9 @@ session_start();
                 echo "<p>Vous devez être connecté pour voir vos informations.</p>";
             }
             ?>
-            <script>
-
-            </script>
         </section>
     </main>
-    <script src="JS/update.js"></script>
+    <script src="JS/functions.js"></script>
 </body>
 
 </html>
