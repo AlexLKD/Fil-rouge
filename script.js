@@ -70,24 +70,3 @@ updateClock();
 
 // refresh the clock every second
 setInterval(updateClock, 1000);
-
-// Wait for the document to load
-document.addEventListener("DOMContentLoaded", function () {
-    // Get all dropdown elements
-    var dropdowns = document.getElementsByClassName("dropdown");
-
-    // Loop through each dropdown
-    for (var i = 0; i < dropdowns.length; i++) {
-        var dropdown = dropdowns[i];
-
-        // Show the dropdown content on hover
-        dropdown.addEventListener("mouseover", function () {
-            this.querySelector(".dropdown-content").style.display = "block";
-        });
-
-        // Hide the dropdown content when the mouse leaves
-        dropdown.addEventListener("mouseout", function () {
-            this.querySelector(".dropdown-content").style.display = "none";
-        });
-    }
-});

@@ -344,7 +344,7 @@ p {
     }
 }
 
-/* CLASSES */
+/* CLASSES CAROUSEL*/
 
 .classes-ttl {
     font-size: 1.2rem;
@@ -445,6 +445,8 @@ p {
     }
 }
 
+/* FORM UPLOAD PDF  */
+
 .upload-form {
     display: flex;
     flex-direction: column;
@@ -476,4 +478,30 @@ p {
     width: 50%;
     text-align: center;
     margin: 0.5rem auto;
+}
+
+/* LANGUAGES  */
+
+.languages-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.languages-box {
+    width: 80%;
+    margin: 1rem auto;
+    border: 2px solid var(--vulcan);
+    border-radius: 25px;
+}
+
+@media (min-width: 768px) {
+    .languages-box {
+        width: 40%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .languages-box {
+        width: 30%;
+    }
 }
