@@ -23,9 +23,9 @@
         <div class="header-menu-button"></div>
     </label>
     <ul class="header-menu">
-        <li><a class="header-lnk" href="PHP/index.php">Accueil</a></li>
+        <li><a class="header-lnk" href="index.php">Accueil</a></li>
         <li class="dropdown">
-            <a class="header-lnk" href="#">Formations</a>
+            <a class="header-lnk" href="languages.php">Formations</a>
             <!-- <div class="dropdown-content"> -->
             <?php
             // $query = $dbCo->prepare("SELECT country, name, id_language, name FROM languages");
@@ -41,7 +41,7 @@
         <li><a class="header-lnk" href="#">Qui sommes-nous</a></li>
         <li><a class="header-lnk" href="#">Contacts</a></li>
         <?php if (isset($_SESSION['user_id'])) : ?>
-            <li><a class="header-lnk" href="#">Mon compte</a></li>
+            <li><a class="header-lnk" href="dashboard.php">Mon compte</a></li>
             <li class="header-cta-desktop cta-desktop">
                 <a class="header-cta cta" href="#" onclick="confirmLogout()">Se déconnecter</a>
             </li>
