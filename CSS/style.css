@@ -511,3 +511,15 @@ p {
 .course-icon {
     width: 50px;
 }
+
+/* DASHBOARD */
+
+.edit-info-icon {
+    width: 50px;
+}
+.edit-info-btn {
+    border-radius: 25px;
+}
+.hidden {
+    display: none;
+}

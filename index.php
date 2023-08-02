@@ -78,7 +78,7 @@ var_dump($_SESSION);
             </p>
         </section>
     </main>
-    <script src="script.js"></script>
+    <script src="JS/script.js"></script>
 </body>
 
 </html>
