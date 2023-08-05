@@ -48,61 +48,66 @@ if (isset($_POST['submit'])) {
     }
 }
 
+// Load the .env file
+require_once 'vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+// Get the form data
 if (isset($_POST['login'])) {
     $emailOrUsername = $_POST['loginName'];
     $password = $_POST['loginPassword'];
 
-    // Replace 'your_db_host', 'your_db_username', 'your_db_password', and 'your_db_name' with your actual database credentials
-    $dbCo = new mysqli('localhost', 'phplocal', 'phplocal', 'fil-rouge');
-
-    if ($dbCo->connect_error) {
-        die("Connection failed: " . $dbCo->connect_error);
+    // Create a PDO connection using the .env variables
+    try {
+        $dbCo = new PDO(
+            $_ENV['DB_HOST'],
+            $_ENV['DB_USER'],
+            $_ENV['DB_PASSWORD']
+        );
+        $dbCo->setAttribute(
+            PDO::ATTR_DEFAULT_FETCH_MODE,
+            PDO::FETCH_ASSOC
+        );
+    } catch (Exception $e) {
+        die('Unable to connect to the database.
+            ' . $e->getMessage());
     }
 
-    // Prepare the query with placeholders
+    // Prepare the query with a placeholder
     $query = $dbCo->prepare("SELECT * FROM users WHERE email = ? LIMIT 1");
 
-    if ($query) {
-        // Bind the parameters to the placeholders
-        $query->bind_param("s", $emailOrUsername);
+    // Execute the query with the parameter
+    $query->execute([$emailOrUsername]);
 
-        // Execute the query
-        $query->execute();
+    // Fetch the user data
+    $user = $query->fetch();
 
-        // Get the result
-        $result = $query->get_result();
+    // Check if a row is returned
+    if ($user) {
+        // Verify the password
+        if (password_verify($password, $user['password'])) {
+            // Password is correct, user is valid
+            $_SESSION['user_id'] = $user['id_person'];
+            $_SESSION['user_firstname'] = $user['firstname'];
+            $_SESSION['user_lastname'] = $user['lastname'];
+            $_SESSION['type_of_user'] = $user['type_of_user'];
+            $_SESSION['user_email'] = $user['email'];
+            // ... store other user data in session if needed
 
-        // Check if a row is returned
-        if ($result->num_rows == 1) {
-            // Fetch the user data
-            $user = $result->fetch_assoc();
-
-            // Verify the password
-            if (password_verify($password, $user['password'])) {
-                // Password is correct, user is valid
-                $_SESSION['user_id'] = $user['id_person'];
-                $_SESSION['user_firstname'] = $user['firstname'];
-                $_SESSION['user_lastname'] = $user['lastname'];
-                $_SESSION['type_of_user'] = $user['type_of_user'];
-                $_SESSION['user_email'] = $user['email'];
-                // ... store other user data in session if needed
-
-                // Redirect to the dashboard or other authent   icated pages
-                header('Location: index.php');
-                exit();
-            } else {
-                header('Location: login.php?msg="Mot de passe incorrect"');
-                exit();
-            }
+            // Redirect to the dashboard or other authenticated pages
+            header('Location: index.php');
+            exit();
         } else {
-            header('Location: login.php?msg="Utilisateur introuvable"');
+            header('Location: login.php?msg="Mot de passe incorrect"');
+            exit();
         }
+    } else {
+        header('Location: login.php?msg="Utilisateur introuvable"');
     }
-    $query->close();
-    $dbCo->close();
-    // if (isset($error)) {
-    //     echo $error;
-    // }
+
+    // Close the connection
+    $dbCo = null;
 }
 
 if (isset($_POST['updateInfo'])) {
