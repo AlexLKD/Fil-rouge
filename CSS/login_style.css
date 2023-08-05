@@ -1,11 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
-:root {
-    font-size: 16px;
-    --vulcan: #373942;
-    --whitesmoke: #f5f5f5;
-    --cta: #222e50;
-}
 .continue-btn {
     color: #fff !important;
 }

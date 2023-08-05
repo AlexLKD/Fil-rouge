@@ -23,12 +23,36 @@
         <div class="header-menu-button"></div>
     </label>
     <ul class="header-menu">
-        <li><a class="header-lnk" href="PHP/index.php">Accueil</a></li>
-        <li><a class="header-lnk" href="#">Formations</a></li>
-        <li><a class="header-lnk" href="#">Qui sommes-nous</a></li>
-        <li><a class="header-lnk" href="#">Contacts</a></li>
-        <li class="header-cta-desktop cta-desktop">
-            <a class="header-cta cta" href="login.php">Se connecter</a>
+        <li><a class="header-lnk" href="index.php">Accueil</a></li>
+        <li class="dropdown">
+            <a class="header-lnk" href="languages.php">Formations</a>
+            <!-- <div class="dropdown-content"> -->
+            <?php
+            // $query = $dbCo->prepare("SELECT country, name, id_language, name FROM languages");
+            // $query->execute();
+            // $languages = $query->fetchAll();
+            // foreach ($languages as $language) {
+            //     $languageLink = 'language.php?country=' . urlencode($language['country']);
+            //     echo '<a href="' . $languageLink . '">' . $language['name'] . '</a>';
+            // }
+            ?>
+            <!-- </div> -->
         </li>
+        <li><a class="header-lnk" href="about.php">Qui sommes-nous</a></li>
+        <li><a class="header-lnk" href="contact.php">Contacts</a></li>
+        <?php if (isset($_SESSION['user_id'])) : ?>
+            <li><a class="header-lnk" href="dashboard.php">Mon compte</a></li>
+            <li class="header-cta-desktop cta-desktop">
+                <a class="header-cta cta" href="#" onclick="confirmLogout()">Se déconnecter</a>
+            </li>
+        <?php else : ?>
+            <li class="header-cta-desktop cta-desktop">
+                <a class="header-cta cta" href="login.php">Se connecter</a>
+            </li>
+        <?php endif; ?>
     </ul>
+    <script src="JS/functions.js">
+    </script>
+
+
 </header>

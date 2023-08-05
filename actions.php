@@ -83,10 +83,12 @@ if (isset($_POST['login'])) {
                 $_SESSION['user_id'] = $user['id_person'];
                 $_SESSION['user_firstname'] = $user['firstname'];
                 $_SESSION['user_lastname'] = $user['lastname'];
+                $_SESSION['type_of_user'] = $user['type_of_user'];
+                $_SESSION['user_email'] = $user['email'];
                 // ... store other user data in session if needed
 
-                // Redirect to the dashboard or other authenticated pages
-                header('Location: login.php?msg="connexion effectuée"');
+                // Redirect to the dashboard or other authent   icated pages
+                header('Location: index.php');
                 exit();
             } else {
                 header('Location: login.php?msg="Mot de passe incorrect"');
@@ -101,4 +103,30 @@ if (isset($_POST['login'])) {
     // if (isset($error)) {
     //     echo $error;
     // }
+}
+
+if (isset($_POST['updateInfo'])) {
+    // Get the form data
+    $user_id = $_SESSION['user_id'];
+    $user_name = $_POST['user_name'];
+    $user_firstname = $_POST['user_firstname'];
+    $user_email = $_POST['user_email'];
+
+    // Prepare the query to update user information in the database
+    $query = $dbCo->prepare("UPDATE users SET lastname = :user_name, firstname = :user_firstname, email = :user_email WHERE id_person = :user_id");
+    $query->execute([
+        ':user_name' => $user_name,
+        ':user_firstname' => $user_firstname,
+        ':user_email' => $user_email,
+        ':user_id' => $user_id
+    ]);
+
+    // Update the session variables with the new values
+    $_SESSION['user_lastname'] = $user_name;
+    $_SESSION['user_firstname'] = $user_firstname;
+    $_SESSION['user_email'] = $user_email;
+
+    // Redirect the user back to the profile page or any other page after the update
+    header('Location: dashboard.php?msg="Informations mises à jour avec succès."');
+    exit;
 }

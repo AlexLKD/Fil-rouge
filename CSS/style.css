@@ -80,7 +80,6 @@ p {
         padding: 0.5rem 1rem;
         border-radius: 1rem;
         font-weight: bold;
-        font-size: 0.9rem;
         color: #fff;
         text-transform: uppercase;
         text-decoration: none;
@@ -123,35 +122,6 @@ p {
     margin: 0 0.4rem;
     overflow: hidden;
 }
-/* .header-lnk {
-    position: relative;
-}
-.header-lnk::after {
-    content: "";
-    display: block;
-    height: 0.25rem;
-    width: 0;
-    position: absolute;
-    left: 0;
-    bottom: -0.5rem;
-    background-color: red;
-    transition: width 0.3s ease;
-}
-.nav-lnk {
-    display: inline-block;
-    color: #fff;
-    font-size: 1.5rem;
-    transition: border 0.5s ease;
-}
-
-.nav-lik.active::after,
-.nav-link:hover::after {
-    width: 100%;
-}
-
-.nav-lnk.active {
-    color: blue;
-} */
 
 .header-menu-button-container {
     display: none;
@@ -252,10 +222,15 @@ p {
         color: var(--vulcan);
         background-color: #fff;
     }
+}
 
-    /* .header-menu > li:not(:last-child) {
-        border-bottom: 1px solid #444;
-    } */
+@media (min-width: 1024px) {
+    .header-lnk {
+        font-size: 0.6rem;
+    }
+    .header-cta {
+        font-size: 0.6rem;
+    }
 }
 
 /* PIC BOOK  */
@@ -369,7 +344,7 @@ p {
     }
 }
 
-/* CLASSES */
+/* CLASSES CAROUSEL*/
 
 .classes-ttl {
     font-size: 1.2rem;
@@ -470,6 +445,8 @@ p {
     }
 }
 
+/* FORM UPLOAD PDF  */
+
 .upload-form {
     display: flex;
     flex-direction: column;
@@ -501,4 +478,53 @@ p {
     width: 50%;
     text-align: center;
     margin: 0.5rem auto;
+}
+
+/* LANGUAGES  */
+
+.languages-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.languages-box {
+    width: 80%;
+    margin: 1rem auto;
+    border: 2px solid var(--vulcan);
+    border-radius: 25px;
+}
+
+@media (min-width: 768px) {
+    .languages-box {
+        width: 40%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .languages-box {
+        width: 30%;
+    }
+}
+
+/* DIFFICULTY  */
+
+.course-icon {
+    width: 50px;
+}
+
+/* DASHBOARD */
+
+.edit-info-icon {
+    width: 50px;
+}
+.edit-info-btn {
+    border-radius: 25px;
+}
+.hidden {
+    display: none;
+}
+.plus-btn {
+    width: 40px;
+    border: solid 3px var(--vulcan);
+    border-radius: 25px;
 }

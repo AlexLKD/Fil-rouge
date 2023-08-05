@@ -1,58 +1,66 @@
 <?php
 require 'includes/_database.php';
-// require 'includes/_functions.php';
 session_start();
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-    <!-- MDB -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="CSS/style.css" />
-    <link rel="stylesheet" href="CSS/login_style.css" />
-</head>
-
 <body>
-    <?php
-    include 'includes/header.php';
-    ?>
     <main>
-        <form class="upload-form" action="uploadpdf.php" method="post" enctype="multipart/form-data">
-            <input class="upload-ttl" type="text" name="title_course" placeholder="Title of the Course" required>
-            <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>">
-            <label>Difficulté :</label>
-            <div class="upload-difficulty">
-                <input type="radio" name="id_difficulty" value="1" required> Débutant
-                <input type="radio" name="id_difficulty" value="2" required> Intermédiaire
-                <input type="radio" name="id_difficulty" value="3" required> Expert
-            </div>
-            <label>Langage:</label>
-            <select class="upload-language-option" name="id_languages" required>
-                <?php
-                $query = $dbCo->prepare("SELECT id_language, name FROM languages");
-                $query->execute();
-                $languages = $query->fetchAll();
-                foreach ($languages as $language) {
-                    echo '<option value="' . $language['id_language'] . '">' . $language['name'] . '</option>';
-                }
-                ?>
-            </select>
-            <input type="file" name="fileToUpload" id="fileToUpload">
-            <input class="upload-btn" type="submit" value="Envoyer le cours" name="submit">
-        </form>
         <?php
-        if (array_key_exists('msg', $_GET)) {
-            echo '<p class="upload-course-info">' . $_GET['msg'] . '</p>';
-        }
+        include 'includes/header.php';
         ?>
+        <section class="container">
+            <h2>Tableau de bord</h2>
+            <?php
+            if (!isset($_SESSION['user_id'])) {
+                // Redirect the user to the login page if not logged in
+                header('Location: login.php');
+                exit;
+            }
+            // Check if the user is logged in and if session data exists
+            if (isset($_SESSION['user_id'])) {
+                // Assuming you have stored the user information in the session during login
+                $user_id = $_SESSION['user_id'];
+                $user_name = $_SESSION['user_lastname'];
+                $user_firstname = $_SESSION['user_firstname'];
+                $user_email = $_SESSION['user_email'];
+
+                // Fetch courses uploaded by the user with type_of_user === 2
+                $query = $dbCo->prepare("SELECT * FROM course WHERE id_person_teacher = :user_id");
+                $query->execute([':user_id' => $user_id]);
+                $uploadedCourses = $query->fetchAll(PDO::FETCH_ASSOC);
+            ?>
+                <?php if (count($uploadedCourses) >= 0) : ?>
+                    <h4>Courses Uploaded by You </h4>
+                    <ul>
+                        <?php foreach ($uploadedCourses as $course) : ?>
+                            <li><?php echo $course['title_course']; ?></li>
+                            <!-- Display other course information as needed -->
+                        <?php endforeach; ?>
+                    </ul>
+                    <a class="" href="pdf_form.php"><img class="plus-btn" src="img/plussign" alt=""></a>
+                <?php endif; ?>
+                <form id="userInfoForm" action="actions.php" method="post">
+                    <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>">
+
+                    <label for="user_name">Nom:</label>
+                    <input type="text" id="user_name" name="user_name" value="<?php echo $user_name; ?>" disabled>
+
+                    <label for="user_firstname">Prénom:</label>
+                    <input type="text" id="user_firstname" name="user_firstname" value="<?php echo $user_firstname; ?>" disabled>
+
+                    <label for="user_email">Email:</label>
+                    <input type="email" id="user_email" name="user_email" value="<?php echo $user_email; ?>" disabled>
+
+                    <input class="update-btn hidden" type="submit" value="Valider" name="updateInfo">
+                </form>
+                <button type="button" class="edit-info-btn js-btn-update"><img class="edit-info-icon" src="img/pencil.png" alt=""></button>
+            <?php } else {
+                echo "<p>Vous devez être connecté pour voir vos informations.</p>";
+            }
+            ?>
+        </section>
     </main>
+    <script src="JS/functions.js"></script>
 </body>
+
+</html>
