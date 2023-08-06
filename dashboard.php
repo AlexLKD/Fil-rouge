@@ -1,6 +1,7 @@
 <?php
 require 'includes/_database.php';
 session_start();
+echo $_SESSION['type_of_user'];
 ?>
 
 <body>
@@ -25,16 +26,26 @@ session_start();
                 $user_email = $_SESSION['user_email'];
 
                 // Fetch courses uploaded by the user with type_of_user === 2
-                $query = $dbCo->prepare("SELECT * FROM course WHERE id_person_teacher = :user_id");
+                $query = $dbCo->prepare("SELECT c.title_course, d.difficulty_name, l.name, l.country FROM course c
+                JOIN difficulty d ON c.id_difficulty = d.id_difficulty
+                JOIN languages l ON c.id_language = l.id_language
+                WHERE c.id_person_teacher = :user_id");
                 $query->execute([':user_id' => $user_id]);
                 $uploadedCourses = $query->fetchAll(PDO::FETCH_ASSOC);
             ?>
                 <?php if (count($uploadedCourses) >= 0) : ?>
-                    <h4>Courses Uploaded by You </h4>
+                    <h4>Courses Uploaded by You</h4>
                     <ul>
                         <?php foreach ($uploadedCourses as $course) : ?>
-                            <li><?php echo $course['title_course']; ?></li>
-                            <!-- Display other course information as needed -->
+                            <li>
+                                <div>
+                                    <p><?php echo $course['title_course']; ?></p>
+                                    <p><?php echo $course['difficulty_name']; ?></p>
+                                    <p><?php echo $course['country']; ?></p>
+                                    <img class="classes-img" src="flags/<?php echo $course['country']; ?>.png" alt="<?php echo $course['country']; ?>" />
+                                </div>
+                                <!-- Display other course information as needed -->
+                            </li>
                         <?php endforeach; ?>
                     </ul>
                     <a class="" href="pdf_form.php"><img class="plus-btn" src="img/plussign" alt=""></a>

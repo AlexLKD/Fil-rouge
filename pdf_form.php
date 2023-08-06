@@ -28,8 +28,8 @@ session_start();
     ?>
     <main>
         <?php
-        // Check if the user is a teacher (type_of_user = 2)
         if (isset($_SESSION['type_of_user']) && $_SESSION['type_of_user'] === 2) {
+            // Assuming you have stored the PDO connection in $pdo variable
         ?>
             <form class="upload-form" action="uploadpdf.php" method="post" enctype="multipart/form-data">
                 <input class="upload-ttl" type="text" name="title_course" placeholder="Title of the Course" required>
@@ -45,9 +45,9 @@ session_start();
                 <label>Langage:</label>
                 <select class="upload-language-option" name="id_language" required>
                     <?php
-                    $query = $dbCo->prepare("SELECT id_language, name FROM languages");
+                    $query = $pdo->prepare("SELECT id_language, name FROM languages");
                     $query->execute();
-                    $languages = $query->fetchAll();
+                    $languages = $query->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($languages as $language) {
                         echo '<option value="' . $language['id_language'] . '">' . $language['name'] . '</option>';
                     }
