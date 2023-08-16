@@ -1,7 +1,7 @@
 <?php
 require 'includes/_database.php';
 session_start();
-echo $_SESSION['type_of_user'];
+// echo $_SESSION['type_of_user'];
 ?>
 
 <body>
