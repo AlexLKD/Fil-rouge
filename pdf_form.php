@@ -45,9 +45,9 @@ session_start();
                 <label>Langage:</label>
                 <select class="upload-language-option" name="id_language" required>
                     <?php
-                    $query = $pdo->prepare("SELECT id_language, name FROM languages");
+                    $query = $dbCo->prepare("SELECT id_language, name FROM languages");
                     $query->execute();
-                    $languages = $query->fetchAll(PDO::FETCH_ASSOC);
+                    $languages = $query->fetchAll();
                     foreach ($languages as $language) {
                         echo '<option value="' . $language['id_language'] . '">' . $language['name'] . '</option>';
                     }
