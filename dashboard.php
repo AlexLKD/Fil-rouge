@@ -1,7 +1,7 @@
 <?php
 require 'includes/_database.php';
 session_start();
-echo $_SESSION['type_of_user'];
+// echo $_SESSION['type_of_user'];
 ?>
 
 <body>
@@ -26,7 +26,7 @@ echo $_SESSION['type_of_user'];
                 $user_email = $_SESSION['user_email'];
 
                 // Fetch courses uploaded by the user with type_of_user === 2
-                $query = $dbCo->prepare("SELECT c.title_course, d.difficulty_name, l.name, l.country FROM course c
+                $query = $dbCo->prepare("SELECT c.title_course, l.name, l.country FROM course c
                 JOIN difficulty d ON c.id_difficulty = d.id_difficulty
                 JOIN languages l ON c.id_language = l.id_language
                 WHERE c.id_person_teacher = :user_id");
@@ -40,7 +40,6 @@ echo $_SESSION['type_of_user'];
                             <li>
                                 <div>
                                     <p><?php echo $course['title_course']; ?></p>
-                                    <p><?php echo $course['difficulty_name']; ?></p>
                                     <p><?php echo $course['country']; ?></p>
                                     <img class="classes-img" src="flags/<?php echo $course['country']; ?>.png" alt="<?php echo $course['country']; ?>" />
                                 </div>
