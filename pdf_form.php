@@ -28,7 +28,7 @@ session_start();
     ?>
     <main>
         <?php
-        if (isset($_SESSION['type_of_user']) && $_SESSION['type_of_user'] === 2) {
+        if (isset($_SESSION['type_of_user']) && $_SESSION['type_of_user'] === "2") {
             // Assuming you have stored the PDO connection in $pdo variable
         ?>
             <form class="upload-form" action="uploadpdf.php" method="post" enctype="multipart/form-data">
