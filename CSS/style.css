@@ -75,6 +75,10 @@ p {
     background-color: var(--cta);
 }
 
+.header-cta {
+    text-align: center;
+}
+
 @media (min-width: 1024px) {
     .cta-desktop {
         padding: 0.5rem 1rem;
@@ -122,6 +126,8 @@ p {
     margin: 0 0.4rem;
     overflow: hidden;
 }
+
+/* BURGER MENU  */
 
 .header-menu-button-container {
     display: none;
@@ -173,10 +179,6 @@ p {
     .header-menu-button::after {
     margin-top: 0px;
     transform: rotate(-405deg);
-}
-
-.header-cta {
-    text-align: center;
 }
 
 @media (max-width: 1024px) {
