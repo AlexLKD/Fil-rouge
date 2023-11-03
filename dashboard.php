@@ -26,7 +26,7 @@ session_start();
                 $user_email = $_SESSION['user_email'];
 
                 // Fetch courses uploaded by the user with type_of_user === 2
-                $query = $dbCo->prepare("SELECT c.title_course, l.name, l.country FROM course c
+                $query = $dbCo->prepare("SELECT c.title_course, c.file_name, l.name, l.country FROM course c
                 JOIN difficulty d ON c.id_difficulty = d.id_difficulty
                 JOIN languages l ON c.id_language = l.id_language
                 WHERE c.id_person_teacher = :user_id");
@@ -41,7 +41,8 @@ session_start();
                                 <div>
                                     <p><?php echo $course['title_course']; ?></p>
                                     <p><?php echo $course['country']; ?></p>
-                                    <img class="classes-img" src="flags/<?php echo $course['country']; ?>.png" alt="<?php echo $course['country']; ?>" />
+                                    <embed src="files/<?php echo $course['file_name']; ?>" width="400" height="500" type="application/pdf">
+                                    <!-- <img class="classes-img" src="flags/<?php echo $course['country']; ?>.png" alt="<?php echo $course['country']; ?>" /> -->
                                 </div>
                                 <!-- Display other course information as needed -->
                             </li>
