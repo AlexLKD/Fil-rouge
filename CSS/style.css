@@ -503,6 +503,7 @@ p {
 @media (min-width: 1024px) {
     .languages-box {
         width: 30%;
+        aspect-ratio: 1/1;
     }
 }
 

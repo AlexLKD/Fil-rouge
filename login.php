@@ -128,7 +128,7 @@ session_start();
 
 
                 <!-- Submit button -->
-                <button type="submit" name="submit" class="btn btn-primary btn-block mb-3">Register</button>
+                <button type="submit" name="register" class="btn btn-primary btn-block mb-3">Register</button>
             </form>
         </div>
     </div>

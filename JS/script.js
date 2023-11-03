@@ -6,11 +6,12 @@ const nextButton = document.getElementById("slide-arrow-next");
 let slideWidth = slide.clientWidth + 4;
 // let slideWidth = slide.clientWidth;
 let intervalId;
-
+// Start the interval interval
+intervalId = setInterval(moveToNextSlide, 2000);
 // Move to the next slide
 function moveToNextSlide() {
     const maxScrollLeft =
-        slidesContainer.scrollWidth - slidesContainer.clientWidth + 1;
+        slidesContainer.scrollWidth - slidesContainer.clientWidth;
     const nextScrollLeft = slidesContainer.scrollLeft + slideWidth;
 
     // Check if reaching the last slide, then go back to the first slide
@@ -41,16 +42,16 @@ function resetInterval() {
 // Reset interval on click on one of the arrows
 nextButton.addEventListener("click", () => {
     moveToNextSlide();
-    resetInterval();
+    // resetInterval();
+    // intervalId;
 });
 prevButton.addEventListener("click", () => {
     moveToPrevSlide();
-    resetInterval();
+    // resetInterval();
+    // intervalId;
 });
 // Reset interval if scroll on boxes
 slidesContainer.addEventListener("scroll", resetInterval);
-// Start the interval interval
-intervalId = setInterval(moveToNextSlide, 2000);
 
 // Get current date
 document.getElementById("date-txt").textContent =

@@ -1,7 +1,7 @@
 <?php
 require 'includes/_database.php';
 session_start();
-print_r($_POST);
+
 
 if (!(array_key_exists('HTTP_REFERER', $_SERVER)) && str_contains($_SERVER['HTTP_REFERER'], $_ENV["URL"])) {
     header('Location: index.php?msg=error_referer');
@@ -12,7 +12,7 @@ if (!(array_key_exists('HTTP_REFERER', $_SERVER)) && str_contains($_SERVER['HTTP
     exit;
 }
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['register'])) {
     $firstName = $_POST['registerFirstName'];
     $lastName = $_POST['registerLastName'];
     $email = $_POST['registerEmail'];
@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
             ':password' => $hashedPassword,
             ':typeOfUser' => $typeOfUser
         ]);
-        header('Location: login.php?msg=' . ($isOk ? 'User ajouté' : 'y\'a un souci'));
+        header('Location: login.php?msg=' . ($isOk ? 'Votre compte a été créé' : 'Un problème est survenu lors de la création du compte.'));
         exit;
     }
 }
