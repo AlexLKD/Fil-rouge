@@ -34,13 +34,12 @@ session_start();
                 $uploadedCourses = $query->fetchAll(PDO::FETCH_ASSOC);
             ?>
                 <?php if (count($uploadedCourses) >= 0) : ?>
-                    <h4>Courses Uploaded by You</h4>
+                    <h4>Cours déposés par <?php echo $_SESSION['user_lastname'] . ' ' . $_SESSION['user_firstname'] ?></h4>
                     <ul>
                         <?php foreach ($uploadedCourses as $course) : ?>
                             <li>
                                 <div>
                                     <p><?php echo $course['title_course']; ?></p>
-                                    <p><?php echo $course['country']; ?></p>
                                     <embed src="files/<?php echo $course['file_name']; ?>" width="400" height="500" type="application/pdf">
                                     <!-- <img class="classes-img" src="flags/<?php echo $course['country']; ?>.png" alt="<?php echo $course['country']; ?>" /> -->
                                 </div>
