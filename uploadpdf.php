@@ -2,7 +2,7 @@
 require 'includes/_database.php';
 session_start();
 
-// Check if the 'HTTP_REFERER' key exists in the $_SERVER superglobal and if it contains the expected URL stored in the $_ENV superglobal.
+// Check if the 'HTTP_REFERER' key exists in the $_SERVER superglobal and if it contains the expected URL in the $_ENV superglobal.
 if (!(array_key_exists('HTTP_REFERER', $_SERVER)) && str_contains($_SERVER['HTTP_REFERER'], $_ENV["URL"])) {
     // If the 'HTTP_REFERER' is missing or does not match the expected URL, redirect to the dashboard with an error message.
     header('Location: pdf_form.php?msg=error_referer');
@@ -63,7 +63,7 @@ if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $file_path)) {
     ]);
 
     // Redirect back to the dashboard with a success message
-    header('Location: pdf_form.php?msg=' . urlencode('The file "' . $title_course . '.pdf" has been uploaded.'));
+    header('Location: pdf_form.php?msg=' . urlencode('Le fichier "' . $title_course . '.pdf" a bien été envoyé.'));
     exit;
 } else {
     // If there was an error moving the uploaded file, display an error message and redirect back to the dashboard

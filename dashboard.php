@@ -1,7 +1,6 @@
 <?php
 require 'includes/_database.php';
 session_start();
-// echo $_SESSION['type_of_user'];
 ?>
 
 <body>
@@ -41,7 +40,7 @@ session_start();
                                 <div>
                                     <p><?php echo $course['title_course']; ?></p>
                                     <embed src="files/<?php echo $course['file_name']; ?>" width="400" height="500" type="application/pdf">
-                                    <!-- <img class="classes-img" src="flags/<?php echo $course['country']; ?>.png" alt="<?php echo $course['country']; ?>" /> -->
+                                    <!-- <img class="classes-img" src="flags/<?php echo $course['country']; ?>.png" alt="" /> -->
                                 </div>
                                 <!-- Display other course information as needed -->
                             </li>

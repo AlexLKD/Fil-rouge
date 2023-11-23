@@ -53,15 +53,22 @@ var_dump($_SESSION);
                     </button>
                     <div class="classes-all-boxes" id="slides-container">
                         <?php
+                        // Prepare and execute a SQL query to fetch language information from the database
                         $query = $dbCo->prepare("SELECT country, name, description FROM languages");
                         $query->execute();
+                        // Fetch all languages from the query result
                         $languages = $query->fetchAll();
+                        // Iterate through each language and display relevant information
                         foreach ($languages as $language) {
                             echo '<div class="classes-box">';
+                            // Generate a link for each language using 'country' as parameter
                             $languageLink = 'language.php?country=' . urlencode($language['country']);
                             echo '<a href="' . $languageLink . '">';
+                            // Display the flag image for the language
                             echo '<img class="classes-img" src="flags/' . $language['country'] . '.png" alt="' . $language['country'] . '" />';
+                            // Display the name of the language
                             echo '<h3>' . $language['name'] . '</h3>';
+                            // Display the description of the language
                             echo '<p class="classes-box-txt">' . $language['description'] . '</p>';
                             echo '</a>';
                             echo '</div>';
